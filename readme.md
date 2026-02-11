@@ -1,6 +1,6 @@
 # Ansible Quiz App
 
-**Infrastructure as Code** for the [Quiz Application](https://github.com/your-friend/quiz-app) – a certification‑style quiz platform.
+**Infrastructure as Code** for the [Quiz Application] – a certification‑style quiz platform.
 
 This repository contains **Ansible playbooks and roles** to provision and deploy the entire stack on a **single Hetzner VPS**, with a clear vertical scaling path and CI/CD via GitHub Actions.
 
