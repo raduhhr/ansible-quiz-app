@@ -1,0 +1,425 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 3
+/Kids [ 4 0 R 11 0 R 13 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+/F2-0 9 0 R
+/F3 10 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 3325
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 78 719.8898 cm
+q
+BT 1 0 0 1 0 26 Tm 22 TL /F2 18 Tf 0 0 0 rg (Capacity, Architecture & Cost Estimation \226 Quiz) Tj T* (App) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 685.0898 cm
+Q
+q
+1 0 0 1 78 655.0898 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Application Overview) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 631.0898 cm
+Q
+q
+1 0 0 1 78 535.0898 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 84 Tm /F1 12 Tf 16 TL (This application is a quiz-based web platform designed for certification-style) Tj T* (preparation. It serves curated question sets \(~1000 questions\) with associated) Tj T* (static images \(~2000\2263000 images\). Users receive questions in batches \(5 at a) Tj T* (time\). Traffic is primarily read-heavy, with limited write operations \(quiz) Tj T* (submissions and score storage\). The system prioritizes simplicity, portability, and) Tj T* (vertical scalability over premature architectural complexity.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 506.2898 cm
+Q
+q
+1 0 0 1 78 476.2898 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Stack Overview) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 452.2898 cm
+Q
+q
+1 0 0 1 78 312.2898 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 0 129 Tm /F3 11 Tf 14 TL (- Angular Frontend \(SPA\)) Tj T* (- Node.js Backend \(API\)) Tj T* (- SQL \(Postgres\) OR MongoDB \(primary datastore\)) Tj T* (- Reverse Proxy \(Caddy / Traefik / Nginx\)) Tj T* (- Static curated images served locally) Tj T* (- Single Hetzner VPS node) Tj T*  T* (Provisioning & Deployment:) Tj T* (- Ansible for OS provisioning, Docker installation, firewall, and deployment) Tj T* (- Docker Compose for service orchestration) Tj T* ET
+Q
+q
+1 0 0 1 78 283.4898 cm
+Q
+q
+1 0 0 1 78 253.4898 cm
+q
+BT 1 0 0 1 0 4 Tm 18 TL /F2 14 Tf 0 0 0 rg (VPS Options & Pricing \(Approximate Monthly\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 229.4898 cm
+Q
+q
+1 0 0 1 78 157.4898 cm
+q
+.827451 .827451 .827451 rg
+n 0 72 241.566 -18 re f*
+0 0 0 rg
+BT /F1 11 Tf 12 TL ET
+BT 1 0 0 1 6 58 Tm (Plan) Tj T* ET
+BT 1 0 0 1 45.511 58 Tm (vCPU) Tj T* ET
+BT 1 0 0 1 86.232 58 Tm (RAM) Tj T* ET
+BT 1 0 0 1 126.359 58 Tm (NVMe) Tj T* ET
+BT 1 0 0 1 172.602 58 Tm (Approx Price) Tj T* ET
+BT 1 0 0 1 6 40 Tm (CX22) Tj T* ET
+BT 1 0 0 1 45.511 40 Tm (2) Tj T* ET
+BT 1 0 0 1 86.232 40 Tm (4GB) Tj T* ET
+BT 1 0 0 1 126.359 40 Tm (40GB) Tj T* ET
+BT 1 0 0 1 172.602 40 Tm (\2005) Tj T* ET
+BT 1 0 0 1 6 22 Tm (CX32) Tj T* ET
+BT 1 0 0 1 45.511 22 Tm (4) Tj T* ET
+BT 1 0 0 1 86.232 22 Tm (8GB) Tj T* ET
+BT 1 0 0 1 126.359 22 Tm (80GB) Tj T* ET
+BT 1 0 0 1 172.602 22 Tm (\2009\22612) Tj T* ET
+BT 1 0 0 1 6 4 Tm (CX42) Tj T* ET
+BT 1 0 0 1 45.511 4 Tm (8) Tj T* ET
+BT 1 0 0 1 86.232 4 Tm (16GB) Tj T* ET
+BT 1 0 0 1 126.359 4 Tm (160GB) Tj T* ET
+BT 1 0 0 1 172.602 4 Tm (\20018\22622) Tj T* ET
+q
+1 J
+1 j
+.501961 .501961 .501961 RG
+.5 w
+n 0 72 m 241.566 72 l S
+n 0 0 m 241.566 0 l S
+n 0 0 m 0 72 l S
+n 241.566 0 m 241.566 72 l S
+n 0 54 m 241.566 54 l S
+n 0 36 m 241.566 36 l S
+n 0 18 m 241.566 18 l S
+n 39.511 0 m 39.511 72 l S
+n 80.232 0 m 80.232 72 l S
+n 120.359 0 m 120.359 72 l S
+n 166.602 0 m 166.602 72 l S
+Q
+Q
+Q
+q
+1 0 0 1 78 128.6898 cm
+Q
+q
+1 0 0 1 78 98.68976 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Architecture Overview \226 Single VPS Deployment) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+0 70 595.2756 80 re
+f*
+Q
+
+
+endstream
+endobj
+6 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+8 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+9 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/BaseFont /Courier
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+11 0 obj
+<<
+/Contents 12 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+/F2-0 9 0 R
+/F3 10 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 2423
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 78 745.8898 cm
+Q
+q
+1 0 0 1 78 381.8898 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 0 353 Tm /F3 11 Tf 14 TL (                        Internet) Tj T* (                            |) Tj T* (                     +---------------+) Tj T* (                     |  Cloudflare   |) Tj T* (                     |  \(DNS + TLS\)  |) Tj T* (                     +---------------+) Tj T* (                            |) Tj T* (                     +-----------------+) Tj T* (                     |  Hetzner VPS    |) Tj T* (                     |  \(Provisioned   |) Tj T* (                     |   via Ansible\)  |) Tj T* (                     +-----------------+) Tj T* (                            |) Tj T* (                 +-------------------------+) Tj T* (                 | Reverse Proxy           |) Tj T* (                 +-------------------------+) Tj T* (                    |                  |) Tj T* (              +-----------+       +-----------+) Tj T* (              | Angular   |       |  Node API |) Tj T* (              | Frontend  |       |  Backend  |) Tj T* (              +-----------+       +-----------+) Tj T* (                                        |) Tj T* (                                 +-------------+) Tj T* (                                 | SQL/MongoDB |) Tj T* (                                 |  Database   |) Tj T* (                                 +-------------+) Tj T* ET
+Q
+q
+1 0 0 1 78 353.0898 cm
+Q
+q
+1 0 0 1 78 323.0898 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Vertical Scaling Strategy) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 299.0898 cm
+Q
+q
+1 0 0 1 78 89.08976 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 0 199 Tm /F3 11 Tf 14 TL (Launch Strategy:) Tj T* (- First month: Start with CX32 or CX42 for traffic uncertainty.) Tj T* (- After stabilization: Downscale to CX22 if sustained load is low.) Tj T*  T* (Vertical scaling process:) Tj T* (1. Stop VPS) Tj T* (2. Resize in Hetzner panel) Tj T* (3. Restart) Tj T* (4. Optional filesystem resize) Tj T*  T* (Terraform can later be introduced for:) Tj T* (- VPS provisioning) Tj T* (- DNS management) Tj T* (- Firewall configuration) Tj T* (- Managed DB/CDN integration) Tj T* ET
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+0 0 0 rg
+BT
+/F2-0 18 Tf
+21.6 TL
+ET
+BT
+1 0 0 1 72 769.8898 Tm
+(Architecture Overview \227 Single VPS Deployment) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+13 0 obj
+<<
+/Contents 14 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+/F2-0 9 0 R
+/F3 10 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 1461
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 78 735.0898 cm
+Q
+q
+1 0 0 1 78 705.0898 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Estimated Monthly Cost \(Current State\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 681.0898 cm
+Q
+q
+1 0 0 1 78 471.0898 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 0 199 Tm /F3 11 Tf 14 TL (CX22 setup:) Tj T* (- VPS: \2005) Tj T* (- Domain: \2001\2262) Tj T* (- Cloudflare \(Free Tier\): \2000) Tj T* (Total: ~\2006\2267/month) Tj T*  T* (CX32 setup:) Tj T* (- VPS: \2009\22612) Tj T* (- Domain: \2001\2262) Tj T* (Total: ~\20010\22614/month) Tj T*  T* (CX42 setup:) Tj T* (- VPS: \20018\22622) Tj T* (- Domain: \2001\2262) Tj T* (Total: ~\20019\22624/month) Tj T* ET
+Q
+q
+1 0 0 1 78 442.2898 cm
+Q
+q
+1 0 0 1 78 412.2898 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 14 Tf 18 TL (Future Scaling Cost Reference) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78 388.2898 cm
+Q
+q
+1 0 0 1 78 234.2898 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 0 143 Tm /F3 11 Tf 14 TL (CDN Options \(Later Stage\):) Tj T* (- Cloudflare Free: \2000) Tj T* (- Cloudflare Pro: ~\20020/month) Tj T* (- Object Storage + CDN \(Hetzner\): ~\2005\22610/month) Tj T*  T* (Managed Database Options:) Tj T* (- Managed Postgres \(entry tier\): \20015\22630/month) Tj T* (- Managed MongoDB \(entry tier\): \20020\22650/month) Tj T*  T* (Load Balancer \(Horizontal Scaling\):) Tj T* (- Cloud LB: ~\2005\22615/month) Tj T* ET
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+Q
+
+
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000127 00000 n 
+0000000176 00000 n 
+0000000442 00000 n 
+0000003819 00000 n 
+0000003926 00000 n 
+0000004033 00000 n 
+0000004145 00000 n 
+0000004257 00000 n 
+0000004363 00000 n 
+0000004631 00000 n 
+0000007107 00000 n 
+0000007375 00000 n 
+trailer
+<<
+/Size 15
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+8889
+%%EOF

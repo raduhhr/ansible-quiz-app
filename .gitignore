@@ -1,0 +1,35 @@
+# Ansible
+*.retry
+*.pyc
+__pycache__/
+.vault_pass
+.vault_pass.txt
+ansible.cfg.local
+
+# Inventory (contains IPs/credentials)
+/inventory/production/hosts.yml
+/inventory/staging/hosts.yml
+/host_vars/*.yml
+/group_vars/*/vault.yml
+
+# Secrets / environment
+.env
+*.env
+**/secrets.yml
+**/vault.yml
+
+# OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs
+*.log
