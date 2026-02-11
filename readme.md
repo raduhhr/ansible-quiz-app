@@ -8,6 +8,47 @@ This repository contains **Ansible playbooks and roles** to provision and deploy
 
 ## Architecture Overview
 
+
+Internet
+|
++---------------+
+| Cloudflare
+|
+| (DNS + TLS) |
++---------------+
+|
++-----------------+
+| Hetzner VPS
+|
+| (Provisioned
+|
+|
+via Ansible) |
++-----------------+
+|
++-------------------------+
+| Reverse Proxy
+|
++-------------------------+
+|
+|
++-----------+
++-----------+
+| Angular
+|
+| Node API |
+| Frontend |
+| Backend |
++-----------+
++-----------+
+|
++-------------+
+| SQL/MongoDB |
+| Database
+|
++-------------+
+
+
 | Component           | Technology                             |
 |---------------------|----------------------------------------|
 | Frontend            | Angular (SPA, static files)           |
