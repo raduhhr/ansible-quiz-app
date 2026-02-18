@@ -2,7 +2,9 @@
 
 **Infrastructure as Code** for the [quiz-app repo here] – a certification‑style quiz platform.
 
-This repository contains **Ansible playbooks and roles** to provision and deploy the entire stack on a **single Hetzner VPS**, with a clear vertical scaling path and CI/CD via GitHub Actions.
+This repository contains **Ansible playbooks and roles** to configure and deploy the entire stack on a **single Hetzner VPS**, with a clear vertical scaling path and CI/CD via GitHub Actions.
+
+> **Provisioning vs Configuration:** Infrastructure (VPS, firewall, DNS) is provisioned via **Terraform**. Everything that runs on the server — OS hardening, Docker, app deployment — is handled by **Ansible**. The two tools are complementary: Terraform creates the machine, Ansible configures it.
 
 ---
 
@@ -18,13 +20,59 @@ This repository contains **Ansible playbooks and roles** to provision and deploy
 | Reverse Proxy       | Caddy / Traefik / Nginx              |
 | Static images       | ~2000–3000 images, served locally    |
 | Orchestration       | Docker Compose                       |
-| Provisioning        | Ansible                              |
+| Infrastructure      | **Terraform** (VPS, firewall, DNS)   |
+| Configuration       | **Ansible** (OS, Docker, app deploy) |
 | Hosting             | **Hetzner VPS** (CX22 / CX32 / CX42) |
 
 **Traffic pattern:** Read‑heavy, low writes.  
 **Philosophy:** Simplicity, portability, vertical scalability, no over‑engineering.
 
 ---
+
+## Terraform — Infrastructure Provisioning
+
+Terraform manages all cloud infrastructure as code. If the VPS dies, `terraform apply` recreates it and Ansible handles the rest.
+
+**What Terraform covers:**
+- Hetzner VPS (server type, image, region, SSH key)
+- Hetzner firewall rules
+- Cloudflare DNS records
+
+### Vertical Scaling via Terraform
+
+Scaling is a one-liner — no clicking in the Hetzner panel:
+
+```bash
+terraform apply -var="server_type=cx42"   # scale up
+terraform apply -var="server_type=cx22"   # scale down
+```
+
+Terraform will show a plan before applying. The VPS stops, resizes, and restarts automatically.
+
+### Terraform Repo Structure
+
+```
+terraform/
+├── main.tf          # Hetzner server, SSH key, firewall
+├── dns.tf           # Cloudflare DNS records
+├── variables.tf     # server_type, region, etc.
+├── outputs.tf       # VPS IP (fed into Ansible inventory)
+└── terraform.tfvars # Local values — not committed
+```
+
+> ⚠️ `terraform.tfvars` contains API tokens and is gitignored. Store state remotely (Terraform Cloud free tier or Hetzner Object Storage).
+
+### Basic Terraform Workflow
+
+```bash
+terraform init      # download providers, initialize
+terraform plan      # preview changes — always run this first
+terraform apply     # provision / update infrastructure
+terraform destroy   # full teardown — use with caution
+```
+
+---
+
 ## Cost & Scaling Strategy
 
 | Plan   | vCPU | RAM  | Storage | Approx. monthly |
@@ -33,8 +81,7 @@ This repository contains **Ansible playbooks and roles** to provision and deploy
 | CX32   | 4    | 8GB  | 80GB    | €9–12           |
 | CX42   | 8    | 16GB | 160GB   | €18–22          |
 
-**Launch recommendation:** Start with **CX32** (or CX42 if uncertain), monitor load, then **downscale** to CX22 if sustained traffic is low.  
-Scaling is **vertical** – stop VPS, resize in Hetzner panel, restart, optional filesystem resize.
+**Launch recommendation:** Start with **CX32** (or CX42 if uncertain), monitor load, then **downscale** to CX22 if sustained traffic is low.
 
 **Future options** (when needed):
 - Managed database (Postgres/MongoDB) – €15–50/month  
@@ -45,7 +92,11 @@ Scaling is **vertical** – stop VPS, resize in Hetzner panel, restart, optional
 
 ---
 
-## Repo Structure
+## Ansible — Configuration & Deployment
+
+Once Terraform has provisioned the VPS and output its IP, Ansible takes over — OS hardening, Docker installation, firewall config, and app deployment.
+
+### Repo Structure
 
 ```
 .
@@ -70,14 +121,14 @@ Scaling is **vertical** – stop VPS, resize in Hetzner panel, restart, optional
 
 ---
 
-## Setting Started
+## Getting Started
 
 ### 1. Prerequisites
 
+- Terraform installed locally  
 - Ansible installed locally (or rely on GitHub Actions)  
-- A **Hetzner VPS** (or any Ubuntu 22.04/24.04 VM)  
-- SSH key pair – **public key** added to `~/.ssh/authorized_keys` on the VPS  
-- Your friend’s **quiz app repository** (Dockerised)
+- Hetzner API token and Cloudflare API token  
+- SSH key pair  
 
 ### 2. Clone this repository
 
@@ -86,21 +137,33 @@ git clone https://github.com/raduhhr/ansible-quiz-app.git
 cd ansible-quiz-app
 ```
 
-### 3. Configure inventory
+### 3. Provision infrastructure with Terraform
 
-Create `inventory/production/hosts.yml`:
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+# Fill in your Hetzner + Cloudflare tokens and SSH key path
+terraform init
+terraform plan
+terraform apply
+# Outputs the VPS IP on completion
+```
+
+### 4. Configure Ansible inventory
+
+Create `inventory/production/hosts.yml` using the IP from Terraform output:
 
 ```yaml
 all:
   hosts:
     quiz-vps:
-      ansible_host: 1.2.3.4          # <– VPS IP
-      ansible_user: admin            # <– SSH user
+      ansible_host: 1.2.3.4          # <– from terraform output
+      ansible_user: admin
 ```
 
 > ⚠️ **This file is ignored by Git** – IP/credentials stay local.
 
-### 4. (Optional) Encrypt secrets with Ansible Vault
+### 5. (Optional) Encrypt secrets with Ansible Vault
 
 ```bash
 ansible-vault create group_vars/all/vault.yml
@@ -141,13 +204,14 @@ ansible-playbook playbooks/stop.yml
 
 ```bash
 ansible-playbook playbooks/nuke.yml   # use with caution!
+# To also destroy infrastructure: cd terraform && terraform destroy
 ```
 
 ---
 
 ## CI/CD with GitHub Actions
 
-Every push to the `main` branch of **this repository** automatically runs the `deploy.yml` playbook on the production VPS.
+Every push to the `main` branch automatically runs the `deploy.yml` playbook on the production VPS.
 
 **Secrets** must be configured in the GitHub repository:
 
@@ -156,7 +220,7 @@ Every push to the `main` branch of **this repository** automatically runs the `d
 | `VPS_HOST`       | Your VPS IP address                 |
 | `VPS_USER`       | SSH username (e.g. `admin`)         |
 | `VPS_SSH_KEY`    | **Private SSH key** (PEM format)    |
-| `DISCORD_WEBHOOK`| (Optional)for deployment notifications |
+| `DISCORD_WEBHOOK`| (Optional) for deployment notifications |
 
 The workflow uses these secrets to connect and deploy **without exposing any credentials** in the code.
 
@@ -166,9 +230,9 @@ The workflow uses these secrets to connect and deploy **without exposing any cre
 
 When Paul pushes code to the **quiz-app repository**, it will trigger this Ansible pipeline automatically.
 
-How to: 
+How to:
 1. In the app repo, add a **repository dispatch** GitHub Action.
-2. It calls this repo’s `deploy.yml` workflow via `repository_dispatch`.
+2. It calls this repo's `deploy.yml` workflow via `repository_dispatch`.
 3. Everything stays decoupled – app developers never touch infrastructure.
 
 *(Setup instructions will be added HERE once the app repo is ready.)*
